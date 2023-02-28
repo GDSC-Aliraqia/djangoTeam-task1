@@ -7,7 +7,7 @@ class Address(models.Model):
         ("h","home"),
         ("o","other")
     )
-    address_type = models.Choices(choices=add_choices)
+    address_type = models.Choices(choices=add_choices, max_length=100)
     address = models.CharField(max_length=100)
 
     def __str__(self):
@@ -56,7 +56,7 @@ class Order(models.Model):
     C_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     E_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    Delivery_type = models.Choices(choices = order_choices)
+    Delivery_type = models.Choices(choices = order_choices, max_length=100)
 
     def __str__(self):
         return self.items
@@ -98,8 +98,8 @@ class Product(models.Model):
     auth = models.ForeignKey(Auth, on_delete=models.CASCADE)
     is_active = models.BooleanField()
     is_rare = models.BooleanField()
-    category = models.Choices(choices = choices_category)
-    language = models.Choices(choices = choices_language)
+    category = models.Choices(choices = choices_category, max_length=100)
+    language = models.Choices(choices = choices_language, max_length=100)
 
     def __str__(self):
         return self.name
