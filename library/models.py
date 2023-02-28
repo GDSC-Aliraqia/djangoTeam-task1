@@ -83,7 +83,7 @@ class Product(models.Model):
         ("a", "art"),
         ("h", "historic"),
         ("n", "novels"),
-        ("f", "fictional)"
+        ("f", "fictional")
         )
     choices_language = (
         
