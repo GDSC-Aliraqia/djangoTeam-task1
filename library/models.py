@@ -2,7 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Address(models.Model):
-    address_type = models.Choices()
+    add_choices = {
+        "w": "work",
+        "h": "home",
+        "o": "other"
+    }
+    address_type = models.Choices(choices=add_choices)
     address = models.CharField(max_length=100)
 
     def __str__(self):
@@ -41,13 +46,17 @@ class Employee(models.Model):
 
 
 class Order(models.Model):
+    order_choices = (
+        "intemal",
+        "extemal",
+    )
     items = models.CharField(max_length=100)
     total = models.FloatField()
     price = models.FloatField()
     C_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     E_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    Delivery_type = models.Choices()
+    Delivery_type = models.Choices(choices = order_choices)
 
     def __str__(self):
         return self.items
@@ -69,6 +78,18 @@ class Auth(models.Model):
 
 
 class Product(models.Model):
+    choices_category = {
+        "s":"scientific",
+        "a": "art",
+        "h": "historic",
+        "n": "novels",
+        "f": "fictional"
+        }
+    choices_language = {
+        "a": "arabic",
+        "e": "english",
+        "f": "french"
+    }
     name = models.CharField(max_length=100)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     price = models.FloatField()
@@ -76,8 +97,8 @@ class Product(models.Model):
     auth = models.ForeignKey(Auth, on_delete=models.CASCADE)
     is_active = models.BooleanField()
     is_rare = models.BooleanField()
-    category = models.Choices()
-    language = models.Choices()
+    category = models.Choices(choices = choices_category)
+    language = models.Choices(choices = choices_language)
 
     def __str__(self):
         return self.name
