@@ -78,19 +78,19 @@ class Auth(models.Model):
 
 
 class Product(models.Model):
-    choices_category = {
+    choices_category = (
         ("s","scientific"),
         ("a", "art"),
         ("h", "historic"),
         ("n", "novels"),
         ("f", "fictional)"
-        }
-    choices_language = {
+        )
+    choices_language = (
         
         ("a","arabic"),
         ("e","english"),
         ("f","french")
-    }
+    )
     name = models.CharField(max_length=100)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     price = models.FloatField()
