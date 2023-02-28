@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 class Address(models.Model):
-    add_choices = {
-        "w": "work",
-        "h": "home",
-        "o": "other"
-    }
+    add_choices = (
+        ("w","work"),
+        ("h","home"),
+        ("o","other")
+    )
     address_type = models.Choices(choices=add_choices)
     address = models.CharField(max_length=100)
 
@@ -47,8 +47,8 @@ class Employee(models.Model):
 
 class Order(models.Model):
     order_choices = (
-        "intemal",
-        "extemal",
+        ("i","intemal"),
+        ("e","extemal"),
     )
     items = models.CharField(max_length=100)
     total = models.FloatField()
@@ -79,16 +79,17 @@ class Auth(models.Model):
 
 class Product(models.Model):
     choices_category = {
-        "s":"scientific",
-        "a": "art",
-        "h": "historic",
-        "n": "novels",
-        "f": "fictional"
+        ("s","scientific"),
+        ("a", "art"),
+        ("h", "historic"),
+        ("n", "novels"),
+        ("f", "fictional)"
         }
     choices_language = {
-        "a": "arabic",
-        "e": "english",
-        "f": "french"
+        
+        ("a","arabic"),
+        ("e","english"),
+        ("f","french")
     }
     name = models.CharField(max_length=100)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
