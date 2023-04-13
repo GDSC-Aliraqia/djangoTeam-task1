@@ -32,4 +32,13 @@
 > 
 >[Model field reference](https://docs.djangoproject.com/en/4.1/ref/models/fields/)
 > 
- Good Luck (;
+
+### Before you begin, you must do the following:
+> 1- python manage.py makemigrations 
+> 
+> 2- python manage.py migrate
+> 
+> 3- python manage.py createsuperuser
+>
+
+Good Luck (;
