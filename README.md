@@ -12,7 +12,7 @@
 > > pip install -r requirements.txt
 >  
 > Then:
->> Open library Folder > models.py and Start Coding here.
+>> Open library Folder > models.py and Start Coding here..
 >
 > ### After You Completing coding
 > #### Add Your Code Then Commit It And Finally Push It To Your Repo.
