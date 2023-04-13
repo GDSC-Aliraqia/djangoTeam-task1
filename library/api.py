@@ -1,6 +1,6 @@
 from ninja import NinjaAPI
 from ninja import Router
-<<<<<<< HEAD
+
 from .models import Product, BookAuth
 
 
@@ -9,7 +9,10 @@ Ath_Router = Router(tags=["book_Auth"])
 
 
 @Pr_Router.get("hi")
-=======
+
+
+
+from .models import BookAuth,Product
 
 # 1- Endpoint To Get All Available Books.
 
@@ -27,12 +30,9 @@ Ath_Router = Router(tags=["Product"])
 api=Router(tags=["Product"])
 
 @Pr_Router.get("books")
->>>>>>> 14fce27 (mytask)
+
 def hi(request):
-    num1 = 2
-    num2 = 3
-    sum = num1 + num2
-    return {"Sum" : sum}
+    return Product.objects.filter(is_active__exact=True)
 
 <<<<<<< HEAD
 # EndPoint to Get All Available Books
@@ -66,13 +66,18 @@ def auth(request, auth_name):
     auth_list = BookAuth.objects.get(name=auth_name)
     return [{"auth_name": auth.name, "auth_email": auth.email,}for auth in auth_list]
 
-=======
+
 
 @Ath_Router.get("book&id")
-def hello(request,name,id):
-    return name,id
+def hello(request):
+    x=Product.objects.all()
+    return x.name,x.P_id
 
 @api.get("bookauth")
 def auth(request,name):
+
     return name
->>>>>>> 14fce27 (mytask)
+
+
+    return BookAuth.objects.get(name="IDK!")
+
