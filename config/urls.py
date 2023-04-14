@@ -16,15 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ninja import NinjaAPI
+<<<<<<< HEAD
 
+=======
+from library.views import MyModelList
+>>>>>>> 14fce27 (mytask)
 from library.api import Ath_Router, Pr_Router
 
 api = NinjaAPI()
 
 api.add_router('Product', Pr_Router)
 api.add_router('Book_Auth', Ath_Router)
+<<<<<<< HEAD
 
 urlpatterns = [
+=======
+# name='my-model-list'
+urlpatterns = [
+    path('mymodels/', MyModelList.as_view(), ),
+>>>>>>> 14fce27 (mytask)
     path('admin/', admin.site.urls),
     path("api/", api.urls),
 ]
