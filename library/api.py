@@ -1,5 +1,6 @@
 from ninja import NinjaAPI
 from ninja import Router
+
 from .models import Product, BookAuth
 
 
@@ -8,12 +9,32 @@ Ath_Router = Router(tags=["book_Auth"])
 
 
 @Pr_Router.get("hi")
-def hi(request):
-    num1 = 2
-    num2 = 3
-    sum = num1 + num2
-    return {"Sum" : sum}
 
+
+
+from .models import BookAuth,Product
+
+# 1- Endpoint To Get All Available Books.
+
+# 2- Endpoint To Get Book With ID.
+
+# 3- Endpoint To Get Auth With Specific Name.
+
+# 4- According To Your Opinion،  Complete The Relationship Between Product & BookAuth Models.
+
+
+Pr_Router = Router(tags=["Product"])
+
+Ath_Router = Router(tags=["Product"])
+
+api=Router(tags=["Product"])
+
+@Pr_Router.get("books")
+
+def hi(request):
+    return Product.objects.filter(is_active__exact=True)
+
+<<<<<<< HEAD
 # EndPoint to Get All Available Books
 @Pr_Router.get("Books")
 def books(request):
@@ -44,4 +65,19 @@ def hello(request):
 def auth(request, auth_name):
     auth_list = BookAuth.objects.get(name=auth_name)
     return [{"auth_name": auth.name, "auth_email": auth.email,}for auth in auth_list]
+
+
+
+@Ath_Router.get("book&id")
+def hello(request):
+    x=Product.objects.all()
+    return x.name,x.P_id
+
+@api.get("bookauth")
+def auth(request,name):
+
+    return name
+
+
+    return BookAuth.objects.get(name="IDK!")
 

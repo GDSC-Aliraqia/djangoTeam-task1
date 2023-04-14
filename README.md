@@ -1,5 +1,6 @@
 # djangoTeam-task1
 
+<<<<<<< HEAD
 ## First Step
 > Fork The Repo To You GitHub Account.
 > 
@@ -33,12 +34,22 @@
 >[Model field reference](https://docs.djangoproject.com/en/4.1/ref/models/fields/)
 > 
 
+=======
+>>>>>>> 14fce27 (mytask)
 ### Before you begin, you must do the following:
 > 1- python manage.py makemigrations 
 > 
 > 2- python manage.py migrate
 > 
 > 3- python manage.py createsuperuser
+<<<<<<< HEAD
 >
 
 Good Luck (;
+=======
+> 
+> 
+### Django_Team_Tasks
+
+
+>>>>>>> 14fce27 (mytask)
