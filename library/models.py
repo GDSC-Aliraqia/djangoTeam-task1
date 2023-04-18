@@ -35,7 +35,10 @@ class Product(models.Model):
     is_active = models.BooleanField('is_active', default=True)
     is_rare = models.BooleanField('is_rare', default=False)
     is_DrawTool = models.BooleanField('is_book', default=False)
-    auth = models.ForeignKey('BookAuth', null=True, blank=True, on_delete=models.SET_NULL)
+ auth = models.ForeignKey('BookAuth', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
+
+    def __str__ (self):
+        return f'{self.name}-{self.category}-{self.is_DrawTool}'
 
 
 class BookAuth(models.Model):
@@ -43,3 +46,5 @@ class BookAuth(models.Model):
     email = models.EmailField('auth_email', max_length=254, null=True, blank=True)
     phone = models.CharField('auth_phone', max_length=100)
     number_of_book = models.IntegerField('number_of_book', default=0)
+    def __str__(self):
+        return f'{self.name}-{self.email}'
