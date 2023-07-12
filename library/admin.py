@@ -1,5 +1,5 @@
 from django.contrib import admin
-from library.models import BookAuth, Product
+from .models import BookAuth, Product
 
 # Register your models here.
 

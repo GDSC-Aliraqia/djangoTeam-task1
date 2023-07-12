@@ -48,3 +48,22 @@ class ProOut(Schema):
     price : float
     auth : AuOut = None
 
+
+class CartOut(Schema):
+    id: int
+    user: str
+    product: str
+    quantity: int
+
+
+class CartIn(Schema):
+    user: str
+    product: str
+    quantity: int
+
+
+class OrderOut(Schema):
+    user: str
+    product: str
+    quantity: int
+    order_date: int

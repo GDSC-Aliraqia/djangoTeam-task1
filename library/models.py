@@ -1,7 +1,11 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # Create your models here.
+class User(User):
+
+    def __str__(self):
+        return self.username
 
 class Section(models.TextChoices):
     BookStore = 'Book_Store', 'Book_Store'
@@ -35,7 +39,7 @@ class Product(models.Model):
     is_active = models.BooleanField('is_active', default=True)
     is_rare = models.BooleanField('is_rare', default=False)
     is_DrawTool = models.BooleanField('is_book', default=False)
- auth = models.ForeignKey('BookAuth', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
+    auth = models.ForeignKey('BookAuth', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
 
     def __str__ (self):
         return f'{self.name}-{self.category}-{self.is_DrawTool}'
@@ -48,3 +52,21 @@ class BookAuth(models.Model):
     number_of_book = models.IntegerField('number_of_book', default=0)
     def __str__(self):
         return f'{self.name}-{self.email}'
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"user{self.user}-quantity{self.quantity}"
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    order_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order ID: {self.id} - User: {self.user.username} - Product: {self.product.name}"
