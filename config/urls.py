@@ -20,9 +20,6 @@ from library.apis.product_api import product_router
 from library.apis.auth_api import auth_router
 from library.apis.cart_api import cart_router
 from library.apis.order_api import order_router
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
 
 api = NinjaAPI()
 
