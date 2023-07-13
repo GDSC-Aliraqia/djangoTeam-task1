@@ -113,3 +113,11 @@ class item(models.Model):
     def __str__(self):
         return self.item_qty
 
+class Cart(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"user{self.customer}-quantity{self.quantity}"
+
